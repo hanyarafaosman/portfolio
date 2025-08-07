@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل رفع البورتفوليو على GitHub - عرض تقديمي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .presentation {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px;
+            max-width: 900px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            display: none;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #f8f9fa;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #e9ecef;
+        }
+
+        p, li {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            text-align: right;
+        }
+
+        li::before {
+            content: "✅ ";
+            margin-left: 10px;
+        }
+
+        .step-number {
+            background: #28a745;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            direction: ltr;
+            border-left: 5px solid #28a745;
+        }
+
+        .link-box {
+            background: rgba(40, 167, 69, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 50%;
+            transform: translateX(50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: #28a745;
+            transition: width 0.3s ease;
+            z-index: 1001;
+        }
+
+        .social-post {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: right;
+            direction: rtl;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="slide-counter" id="slideCounter">1 / 8</div>
+
+    <div class="presentation">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="icon">🚀</div>
+            <h1>دليل رفع البورتفوليو على GitHub</h1>
+            <p>خطوة بخطوة لنشر موقعك المجاني</p>
+            <div class="link-box">
+                <strong>هدفنا:</strong> تحويل البورتفوليو إلى موقع مباشر على الإنترنت
+            </div>
+        </div>
+
+        <!-- Slide 2: Overview -->
+        <div class="slide">
+            <h2>📋 نظرة عامة</h2>
+            <ul>
+                <li>إنشاء مستودع على GitHub</li>
+                <li>ربط المشروع المحلي بـ GitHub</li>
+                <li>تفعيل GitHub Pages</li>
+                <li>الحصول على رابط مباشر مجاني</li>
+                <li>مشاركة البورتفوليو على وسائل التواصل</li>
+            </ul>
+            <div class="link-box">
+                ⏱️ الوقت المطلوب: 10-15 دقيقة فقط
+            </div>
+        </div>
+
+        <!-- Slide 3: Step 1 -->
+        <div class="slide">
+            <div class="step-number">1</div>
+            <h2>إنشاء مستودع على GitHub</h2>
+            <ul>
+                <li>اذهب إلى github.com</li>
+                <li>اضغط على "New Repository"</li>
+                <li>اسم المستودع: portfolio</li>
+                <li>⚠️ مهم: لا تضع علامة على "Add README"</li>
+                <li>اضغط "Create repository"</li>
+            </ul>
+            <div class="link-box">
+                🔗 رابط GitHub: https://github.com
+            </div>
+        </div>
+
+        <!-- Slide 4: Step 2 -->
+        <div class="slide">
+            <div class="step-number">2</div>
+            <h2>ربط المشروع بـ GitHub</h2>
+            <p>استخدم هذه الأوامر في Terminal:</p>
+            <div class="code-block">
+git remote add origin https://github.com/hanyarafaosman/portfolio.git<br>
+git branch -M main<br>
+git push -u origin main
+            </div>
+            <div class="link-box">
+                💡 تأكد من تشغيل الأوامر في مجلد المشروع
+            </div>
+        </div>
+
+        <!-- Slide 5: Step 3 -->
+        <div class="slide">
+            <div class="step-number">3</div>
+            <h2>تفعيل GitHub Pages</h2>
+            <ul>
+                <li>اذهب إلى مستودعك على GitHub</li>
+                <li>اضغط على تبويب "Settings"</li>
+                <li>انزل إلى قسم "Pages"</li>
+                <li>اختر "Deploy from a branch"</li>
+                <li>اختر "main" branch و "/ (root)"</li>
+                <li>اضغط "Save"</li>
+            </ul>
+        </div>
+
+        <!-- Slide 6: Final Links -->
+        <div class="slide">
+            <div class="icon">🌐</div>
+            <h2>الروابط النهائية</h2>
+            <div class="link-box">
+                <strong>رابط المستودع:</strong><br>
+                https://github.com/hanyarafaosman/portfolio
+            </div>
+            <div class="link-box">
+                <strong>رابط الموقع المباشر:</strong><br>
+                https://hanyarafaosman.github.io/portfolio
+            </div>
+        </div>
+
+        <!-- Slide 7: Social Media -->
+        <div class="slide">
+            <h2>📱 مشاركة على وسائل التواصل</h2>
+            <div class="social-post">
+                <strong>نموذج منشور LinkedIn:</strong><br><br>
+                🎯 أسعد بمشاركة بورتفوليو الجديد معكم!<br><br>
+                ✨ يتضمن خبرتي العملية لأكثر من 15 سنة في:<br>
+                • تطوير التطبيقات (.NET, Angular)<br>
+                • إدارة قواعد البيانات (SQL Server, Oracle)<br>
+                • الذكاء الاصطناعي (Python, Machine Learning)<br><br>
+                🔗 شاهد البورتفوليو: https://hanyarafaosman.github.io/portfolio
+            </div>
+        </div>
+
+        <!-- Slide 8: Success -->
+        <div class="slide">
+            <div class="icon">🎉</div>
+            <h1>تهانينا!</h1>
+            <h2>البورتفوليو جاهز للعالم</h2>
+            <ul>
+                <li>موقع احترافي ومجاني</li>
+                <li>رابط يمكن مشاركته</li>
+                <li>إمكانية التحديث في أي وقت</li>
+                <li>استضافة آمنة وسريعة</li>
+            </ul>
+            <div class="link-box">
+                🚀 ابدأ في مشاركة إنجازاتك مع العالم!
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">السابق</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">التالي</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            // Update counter
+            document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${totalSlides}`;
+            
+            // Update progress bar
+            document.getElementById('progressBar').style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            if (direction === 1 && currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            } else if (direction === -1 && currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
